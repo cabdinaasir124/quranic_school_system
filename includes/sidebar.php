@@ -17,8 +17,8 @@
         <li class="submenu">
           <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
           <ul>
-            <li><a href="students.html">Student List</a></li>
-            <li><a href="add-student.html">Add Student</a></li>
+            <li><a href="student.php">Student List</a></li>
+            <li><a href="add_Student.php">Add Student</a></li>
             <li><a href="edit-student.html">Edit Student</a></li>
             <li><a href="attendance.html">Attendance</a></li>
             <li><a href="progress.html">Qur’an Progress</a></li>
