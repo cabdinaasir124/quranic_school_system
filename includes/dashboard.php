@@ -43,7 +43,7 @@
             <h3>25</h3>
           </div>
           <div class="db-icon">
-            <i class="fas fa-chalkboard-teacher fa-1x text-success"></i>
+            <i class="fas fa-chalkboard-teacher fa-1x text-primary"></i>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
             <h3>280</h3>
           </div>
           <div class="db-icon">
-            <i class="fas fa-users fa-1x text-warning"></i>
+            <i class="fas fa-users fa-1x text-primary"></i>
           </div>
         </div>
       </div>
@@ -73,11 +73,11 @@
       <div class="card-body">
         <div class="db-widgets d-flex justify-content-between align-items-center">
           <div class="db-info">
-            <h6>Donations</h6>
+            <h6>fees collection</h6>
             <h3>$1,200</h3>
           </div>
           <div class="db-icon">
-            <i class="fas fa-hand-holding-usd fa-1x text-danger"></i>
+            <i class="fas fa-hand-holding-usd fa-1x text-primary"></i>
           </div>
         </div>
       </div>
