@@ -54,4 +54,4 @@ A full-featured web-based management system designed to streamline operations in
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/quranic-school-management.git
+   git clone https://github.com/your-username/quranic_school_system.git
