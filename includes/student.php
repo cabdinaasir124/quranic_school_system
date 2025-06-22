@@ -4,6 +4,7 @@ include("../config/conn.php");
 
 // Fetch all students
 $students = $conn->query("SELECT * FROM students");
+
 ?>
 
 <!DOCTYPE html>
@@ -44,31 +45,31 @@ $students = $conn->query("SELECT * FROM students");
   <div class="row" id="tableView">
     <div class="col-sm-12">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between items-center">
           <h5 class="card-title mb-2">Students Table</h5>
+         <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            ➕ Add Student
+          </button>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="datatable table table-striped">
               <thead>
                 <tr>
+                  <th>id</th>
                   <th>Name</th>
                   <th>Gender</th>
-                  <th>Phone</th>
-                  <th>Email</th>
+                  <th>Address</th>
+                  <th>Nationality</th>
                   <th>Class</th>
+                  <th>View</th>
+                  <th>Update</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
-              <tbody>
-                <?php while ($row = $students->fetch_assoc()) { ?>
-                <tr>
-                  <td><?= htmlspecialchars($row['full_name']) ?></td>
-                  <td><?= htmlspecialchars($row['gender']) ?></td>
-                  <td><?= htmlspecialchars($row['phone_number']) ?></td>
-                  <td><?= htmlspecialchars($row['email']) ?></td>
-                  <td><?= htmlspecialchars($row['class_level']) ?></td>
-                </tr>
-                <?php } ?>
+              <tbody id="ReadStdBody">
+              
               </tbody>
             </table>
           </div>
@@ -87,7 +88,7 @@ $students = $conn->query("SELECT * FROM students");
     <div class="card shadow border-0 h-100">
       <div class="d-flex justify-content-center mt-4">
         <?php if (!empty($row['profile_photo'])): ?>
-        <img src="../assets/img/<?= htmlspecialchars($row['profile_photo']) ?>" 
+        <img src="../upload/<?= htmlspecialchars($row['profile_photo']) ?>" 
              class="rounded-circle shadow-sm" 
              style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #fff;" 
              alt="Student Photo">
@@ -102,20 +103,28 @@ $students = $conn->query("SELECT * FROM students");
         <h5 class="card-title mb-1 text-center"><?= htmlspecialchars($row['full_name']) ?></h5>
         <table class="table table-sm table-borderless text-start mb-0 mt-3">
   <tr>
-    <th scope="row" class="text-muted" style="width: 40%;">Gender:</th>
-    <td><?= htmlspecialchars($row['gender']) ?></td>
+    <th scope="row" class="text-muted" style="width: 40%;">Place Of Birth:</th>
+    <td><?= htmlspecialchars($row['place_of_birth']) ?></td>
   </tr>
   <tr>
-    <th scope="row" class="text-muted">Class:</th>
-    <td><?= htmlspecialchars($row['class_level']) ?></td>
+    <th scope="row" class="text-muted">Date Of Birth:</th>
+    <td><?= htmlspecialchars($row['date_of_birth']) ?></td>
   </tr>
   <tr>
-    <th scope="row" class="text-muted">Phone:</th>
-    <td><?= htmlspecialchars($row['phone_number']) ?></td>
+    <th scope="row" class="text-muted">Responsible Name:</th>
+    <td><?= htmlspecialchars($row['Responsible_name']) ?></td>
   </tr>
   <tr>
-    <th scope="row" class="text-muted">Email:</th>
-    <td><?= htmlspecialchars($row['email']) ?></td>
+    <th scope="row" class="text-muted">Responsible Phone:</th>
+    <td><?= htmlspecialchars($row['Responsible_phone']) ?></td>
+  </tr>
+  <tr>
+    <th scope="row" class="text-muted">Status:</th>
+    <td><?= htmlspecialchars($row['status']) ?></td>
+  </tr>
+  <tr>
+    <th scope="row" class="text-muted">Admission Date:</th>
+    <td><?= htmlspecialchars($row['admission_date']) ?></td>
   </tr>
 </table>
 
@@ -125,8 +134,148 @@ $students = $conn->query("SELECT * FROM students");
   <?php } ?>
 </div>
 
+<!-- View Modal  Modal -->
+<div class="modal fade" id="ViewModal" tabindex="-1" aria-labelledby="ViewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ViewModalLabel">Personal Student Info!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="ViewStdBody">
+   <!-- Will Be Js File -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Student Add Info!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form  id="StudentForm" method="POST" enctype="multipart/form-data">
+          <div class="row">
+
+            <!-- Left Column -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" name="full_name" class="form-control" >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <select name="gender" class="form-select" >
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" name="date_of_birth" class="form-control" >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Place of Birth</label>
+                <input type="text" name="place_of_birth" class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Nationality</label>
+                <input type="text" name="nationality" class="form-control">
+              </div>
+
+              <!-- <div class="mb-3">
+                <label class="form-label">Phone Number</label> -->
+                
+              <div class="mb-3">
+                <label class="form-label">Status</label>
+                <select name="status" class="form-select">
+                 <option value="">Select Status</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Address</label>
+                <input type="text" name="address"  class="form-control">
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+
+              <div class="mb-3">
+                <label class="form-label">Responsible Name</label>
+                <input type="text" name="guardian_name"  class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Responsible Phone</label>
+                <input type="text" name="guardian_phone"  class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Admission Date</label>
+                <input type="date" name="admission_date"  class="form-control" >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Class Level</label>
+                <input type="text" name="class_level"  class="form-control img-thumbnail" >
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Qur'an Memorized Portion</label>
+                <textarea name="quran_memorized_portion"  rows="3" class="form-control"></textarea>
+              </div>
+
+                  <div class="mb-3">
+          <label class="form-label">Profile Photo</label>
+          <input type="file" name="profile_photo" class="form-control" id="profile_photo">
+        </div>
+            </div>
+            </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+        </div>  
+           </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--UPDATE Modal -->
+<div class="modal fade" id="UpdateModal" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="UpdateModalLabel">Student Update Info!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="ReadUpdateBody">
+      <!-- will be Here -->
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
+
+
 
 <!-- Scripts -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
