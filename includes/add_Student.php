@@ -10,10 +10,10 @@
         <h5 class="card-title">Student Registration Form</h5>
       </div>
       <div class="card-body">
-        <form action="submit_student.php" method="POST" enctype="multipart/form-data">
+        <!-- <form  id="StudentForm" method="POST" enctype="multipart/form-data">
           <div class="row">
 
-            <!-- Left Column -->
+            Left Column
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="form-label">Full Name</label>
@@ -44,15 +44,15 @@
                 <input type="text" name="nationality" class="form-control">
               </div>
 
-              <div class="mb-3">
+               <div class="mb-3">
                 <label class="form-label">Phone Number</label>
                 <input type="text" name="phone_number" class="form-control">
-              </div>
+              </div> 
 
-              <!-- <div class="mb-3">
+               <div class="mb-3">
                 <label class="form-label">Email</label>
                 <input type="email" name="email" class="form-control">
-              </div> -->
+              </div> 
 
               <div class="mb-3">
                 <label class="form-label">Status</label>
@@ -68,7 +68,7 @@
               </div>
             </div>
 
-            <!-- Right Column -->
+            Right Column
             <div class="col-md-6">
 
               <div class="mb-3">
@@ -104,12 +104,14 @@
               
 
             </div>
-          </div>
+      
 
           <div class="text-end">
-            <button type="submit" class="btn btn-primary">Submit Student</button>
+            <button type="submit"  class="btn btn-primary">Submit Student</button>
           </div>
-        </form>
+          </form> -->
+              </div>
+        
       </div>
     </div>
   </div>
@@ -118,3 +120,6 @@
 </div>
 </div>
 </div>
+
+
+
