@@ -91,6 +91,7 @@ $teachers = $conn->query("SELECT * FROM teachers");
              class="rounded-circle shadow-sm" 
              style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #fff;" 
              alt="Teacher Photo">
+        
         <?php else: ?>
         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" 
              style="width: 120px; height: 120px; font-size: 32px;">
@@ -98,10 +99,15 @@ $teachers = $conn->query("SELECT * FROM teachers");
         </div>
         <?php endif; ?>
       </div>
+      
 
       <div class="card-body text-left">
         <h5 class="card-title mb-1 text-center"><?= htmlspecialchars($row['full_name']) ?></h5>
         <table class="table table-sm table-borderless text-start mb-0 mt-3">
+          <tr>
+            <th class="text-muted">Teacher id:</th>
+            <td><?= htmlspecialchars($row['teacher_id']) ?></td>
+          </tr>  
           <tr>
             <th class="text-muted" style="width: 40%;">Gender:</th>
             <td><?= htmlspecialchars($row['gender']) ?></td>

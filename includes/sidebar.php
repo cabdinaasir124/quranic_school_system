@@ -29,10 +29,10 @@
         <li class="submenu">
           <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
           <ul>
-            <li><a href="teachers.html">Teacher List</a></li>
-            <li><a href="add-teacher.html">Add Teacher</a></li>
+            <li><a href="teacher.php">Teacher List</a></li>
+            <!-- <li><a href="add-teacher.html">Add Teacher</a></li>
             <li><a href="edit-teacher.html">Edit Teacher</a></li>
-            <li><a href="assign-classes.html">Assign Classes</a></li>
+            <li><a href="assign-classes.html">Assign Classes</a></li> -->
           </ul>
         </li>
 
@@ -47,8 +47,8 @@
         <li class="submenu">
           <a href="#"><i class="fas fa-book-open"></i> <span> Qur'an Classes</span> <span class="menu-arrow"></span></a>
           <ul>
-            <li><a href="classes.html">Class List</a></li>
-            <li><a href="add-class.html">Add Class</a></li>
+            <li><a href="quran_classes.php">Class List</a></li>
+            <!-- <li><a href="add-class.html">Add Class</a></li> -->
             <li><a href="tajweed.html">Tajweed Lessons</a></li>
             <li><a href="lesson-log.html">Lesson Log</a></li>
           </ul>

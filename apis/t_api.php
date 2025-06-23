@@ -37,12 +37,28 @@ function InsertTeacher($conn){
 
 
                     if(move_uploaded_file($file_temp, $folder)){
+                     // Get the latest ticket ID
+                    $sql = "SELECT teacher_id FROM teachers ORDER BY teacher_id DESC LIMIT 1";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $lastId = $row['teacher_id']; // Example: "TC-005"
+                        
+                        // Extract the number and increment
+                        $num = (int)substr($lastId, 3);
+                        $num++;
+                        $newId = 'TC-' . str_pad($num, 3, '0', STR_PAD_LEFT);
+                    } else {
+                        // First record
+                        $newId = 'TC-001';
+                    }
                             
                         $passwordGenerator = rand(100000, 999999);
 
 
-                        $insertTeacher = mysqli_query($conn,"INSERT INTO teachers(`login_pass`,`full_name`, `gender`, `phone_number`, `qualification`, `experience`, `subjects`, `profile_photo`, `status`) VALUES
-                         ('$passwordGenerator','$full_name','$gender','$phone_number','$qualification','$experience','$subjects','$folder','$status')");
+                        $insertTeacher = mysqli_query($conn,"INSERT INTO teachers(`teacher_id`,`login_pass`,`full_name`, `gender`, `phone_number`, `qualification`, `experience`, `subjects`, `profile_photo`, `status`) VALUES
+                         ('$newId','$passwordGenerator','$full_name','$gender','$phone_number','$qualification','$experience','$subjects','$folder','$status')");
 
                         if($insertTeacher){
                             echo json_encode(["status"=>"success","message"=>"Successfully Teacher Inserted!"]);
