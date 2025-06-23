@@ -43,17 +43,13 @@ function StudentInsert($conn){
         $read_old = mysqli_query($conn, "SELECT * FROM students WHERE full_name = '$full_name'");
         if($read_old && mysqli_num_rows($read_old) > 0){
             echo json_encode(["status" => "error", "message" => "This Student Already Exists"]);
-            return;
-        }
-
-
-        
-
-        // Handle File Upload
+          
+        }else
+// Handle File Upload
         if(isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] == 0){
             $file_name = $_FILES['profile_photo']['name'];
             $file_tmp = $_FILES['profile_photo']['tmp_name']; // FIXED HERE
-            $folder = "../uploads" . $file_name;
+            $folder = "../upload/students/" . $file_name;
 
             $read_studentId=mysqli_query($conn, "SELECT student_id FROM students ORDER BY student_id DESC LIMIT 1 ");
             if($read_studentId && mysqli_num_rows($read_studentId)> 0)
@@ -75,7 +71,7 @@ function StudentInsert($conn){
 
             if(move_uploaded_file($file_tmp, $folder)){
                $insert = mysqli_query($conn, "INSERT INTO students (
-                student_id, full_name, gender, date_of_birth, place_of_birth, nationality, address, Responsible_name, Responsible_phone, admission_date, class_level, quran_memorized_portion, profile_photo, status
+                student_id, full_name, gender, date_of_birth, place_of_birth, nationality, `address`, Responsible_name, Responsible_phone, admission_date, class_level, quran_memorized_portion, profile_photo, `status`
             ) VALUES (
                 '$CurrentUserId', '$full_name', '$gender', '$date_of_birth', '$place_of_birth', '$nationality', '$address', '$Responsible_name', '$Responsible_phone', '$admission_date', '$class_level', '$quran_memorized_portion', '$folder', '$status'
             )");

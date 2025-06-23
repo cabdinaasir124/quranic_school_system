@@ -1,6 +1,12 @@
 $(document).ready(function () {
 
 
+
+   
+   
+   
+    // ============ Student Crud Logic Start Here ===================
+
     // View Student Start Here
     $(document).on("click","#ViewStd",function (e) { 
         e.preventDefault();
@@ -69,8 +75,8 @@ $(document).on("click","#UpdateStd",function(e){
 })
 // Update Read Students Logic End Here
 
-     ready();
-    function ready(){
+     readyRquest();
+    function readyRquest(){
      $.ajax({
         type: "POST",
         url: "../apis/s_api.php",
@@ -110,7 +116,8 @@ $(document).on("click","#UpdateStd",function(e){
                     text: response.message,
                     icon: "success"
                     });
-                   ready();
+                  readyRquest();
+
         }else  if(response.status == "error"){
            Swal.fire({
                     title: "I am Sorry!",
@@ -144,14 +151,14 @@ $(document).on("click","#UpdateStd",function(e){
             contentType: false,
             dataType: "json",
             success: function (response) {
-                console.log(response.message);
+                // console.log(response.message);
                 if(response.status === "success"){
                     Swal.fire({
                     title: "Good job!",
                     text: response.message,
                     icon: "success"
                     });
-                   ready();
+                  readyRquest();
                     $('#StudentForm')[0].reset();
                 } else {
                      Swal.fire({
@@ -163,4 +170,5 @@ $(document).on("click","#UpdateStd",function(e){
             }
         });
     });
+ // ============ Student Crud Logic End Here ===================
 });

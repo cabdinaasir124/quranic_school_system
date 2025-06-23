@@ -16,6 +16,7 @@
     <script src="../assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/teacher.js"></script>
    
     
 <!-- Bootstrap 4 Bundle -->
