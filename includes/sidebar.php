@@ -39,7 +39,7 @@
         <li class="submenu">
           <a href="#"><i class="fas fa-users"></i> <span> Parents</span> <span class="menu-arrow"></span></a>
           <ul>
-            <li><a href="parents.html">Parent List</a></li>
+            <li><a href="parents.php">Parent List</a></li>
             <li><a href="add-parent.html">Add Parent</a></li>
           </ul>
         </li>
