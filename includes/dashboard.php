@@ -23,7 +23,7 @@
         <div class="db-widgets d-flex justify-content-between align-items-center">
           <div class="db-info">
             <h6>Hifz Students</h6>
-            <h3>320</h3>
+            <h3 id="Snumber"></h3>
           </div>
           <div class="db-icon">
             <i class="fas fa-book-reader fa-1x text-primary"></i>
@@ -40,7 +40,7 @@
         <div class="db-widgets d-flex justify-content-between align-items-center">
           <div class="db-info">
             <h6>Teachers</h6>
-            <h3>25</h3>
+            <h3 id="Tnumber"></h3>
           </div>
           <div class="db-icon">
             <i class="fas fa-chalkboard-teacher fa-1x text-primary"></i>
