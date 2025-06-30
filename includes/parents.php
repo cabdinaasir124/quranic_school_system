@@ -11,7 +11,7 @@ $teachers = $conn->query("SELECT * FROM teachers");
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Teachers</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/> -->
 </head>
 <body>
 
@@ -51,17 +51,8 @@ $teachers = $conn->query("SELECT * FROM teachers");
                     <th>Delete</th>
                 </tr>
                 </thead>
-              <tbody>
-               <tr>
-                <td>P001</td>
-                <td>cali ibraahim Sheekh</td>
-                <td>Father</td>
-                <td>615887025</td>
-                <td>xaji@gmail.com</td>
-                <td><button class="btn btn-sm btn-warning"><i class="fas fa-eye"></i>&nbsp;View</button></td>
-                <td><button class="btn btn-sm btn-success"><i class="fas fa-edit"></i>&nbsp;edit</button></td>
-                <td><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i>&nbsp;Delete</button></td>
-               </tr>
+              <tbody id="ReadParents">
+               <!-- Will Be Js Becoming The Data -->
               </tbody>
             </table>
           </div>
@@ -69,11 +60,37 @@ $teachers = $conn->query("SELECT * FROM teachers");
       </div>
     </div>
   </div>
+<!-- view Modal Parent -->
+<!-- view Modal Parent -->
+<div class="modal fade" id="ViewTeacherModal" tabindex="-1" aria-labelledby="ViewTeacherModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-  <!-- ADD TEACHER MODAL -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="ViewTeacherModalLabel">Student Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body" id="ViewBodyParent">
+        <!-- Your content goes here -->
+         
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+  <!-- ADD PARENT MODAL -->
 <div class="modal fade" id="addTeacherModal" tabindex="-1" aria-labelledby="addTeacherModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <form action="save_parent.php" method="POST" class="modal-content">
+    <form id="AddParentForm" method="POST" class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add New Parent</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -87,12 +104,12 @@ $teachers = $conn->query("SELECT * FROM teachers");
           <div class="col-md-6">
             <div class="mb-3">
               <label>Name:</label>
-              <input type="text" name="name" class="form-control" required>
+              <input type="text" name="name" class="form-control" >
             </div>
 
             <div class="mb-3">
               <label>Relationship:</label>
-              <input type="text" name="relationship" class="form-control" required>
+              <input type="text" name="relationship" class="form-control" >
             </div>
 
             <div class="mb-3">
@@ -102,7 +119,7 @@ $teachers = $conn->query("SELECT * FROM teachers");
 
             <div class="mb-3">
               <label>Phone:</label>
-              <input type="text" name="phone" class="form-control" required>
+              <input type="text" name="phone" class="form-control" >
             </div>
 
             <div class="mb-3">
@@ -180,10 +197,17 @@ $teachers = $conn->query("SELECT * FROM teachers");
   </div>
 </div>
 
+<!-- UPDATE PARENT MODAL -->
+<div class="modal fade" id="UpdateTeacherModal" tabindex="-1" aria-labelledby="UpdateTeacherModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" id="ReadUpdateBody">
+    
+  </div>
+</div>
+
 
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 </html>

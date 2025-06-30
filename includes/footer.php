@@ -18,6 +18,7 @@
     <script src="../js/app.js"></script>
     <script src="../js/teacher.js"></script>
     <script src="../js/dashboad.js"></script>
+    <script src="../js/parent.js"></script>
    
     
 <!-- Bootstrap 4 Bundle -->
